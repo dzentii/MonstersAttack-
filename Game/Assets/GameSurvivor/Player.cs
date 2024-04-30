@@ -3,9 +3,8 @@ using System.Collections.Generic;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
-public class Player : MonoBehaviour
+public class Player : Character
 {
-    [SerializeField] private float moveSpeed;
     [SerializeField] private float shootInterval;
     [SerializeField] private float shootSpeed;
     [SerializeField] private GameObject bulletPrefab;

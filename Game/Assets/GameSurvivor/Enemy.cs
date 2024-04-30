@@ -1,9 +1,8 @@
 using UnityEngine;
 
-public class Enemy : MonoBehaviour
+public class Enemy : Character
 {
     private Transform target;
-    [SerializeField] private float moveSpeed;
 
     private void Start() 
     {
