@@ -10,6 +10,8 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private UIManager uiManager;
 
+    [SerializeField] Camera mainCamera;
+
     private float gameTime;
 
     private void Update() 
@@ -19,10 +21,12 @@ public class GameManager : MonoBehaviour
         
         if (player.IsDead)
         {
+            mainCamera.transform.parent = null;
             foreach (var enemy in enemies)
                 enemy.enabled = false;
-
+            
             gameOverPanel.SetActive(true);
+            Time.timeScale = 0;
         }
     }
 }

@@ -1,7 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.Experimental.GraphView;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Player : Character
@@ -14,6 +14,8 @@ public class Player : Character
     [SerializeField] private int[] experiencesLevels;
     [SerializeField] private UIManager uiManager;
     [SerializeField] private PlayerUI localUI;
+    [SerializeField] private AudioClip shootAudio;
+    [SerializeField] private AudioManager audioManager;
 
     private float shootTimer;
     private int currentLevel;
@@ -60,6 +62,7 @@ public class Player : Character
                 var rbody = bullet.GetComponent<Rigidbody2D>();
                 var direction = (closest.transform.position - transform.position).normalized;
                 rbody.AddForce(direction * shootSpeed);
+                audioManager.PlayAudio(shootAudio, 0.2f);
             }
 
             yield return new WaitForSeconds(BulletsInterval);

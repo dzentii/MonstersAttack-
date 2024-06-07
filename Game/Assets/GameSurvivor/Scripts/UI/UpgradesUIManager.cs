@@ -8,6 +8,8 @@ public class UpgradesUIManager : MonoBehaviour
 {
     [SerializeField] private UpgradeUI upgradeUIPrefab;
     [SerializeField] private UpgradesManager upgradesManager;
+    [SerializeField] private AudioClip upgradeAudio;
+    [SerializeField] private AudioManager audioManager;
 
     public void Show(List<Upgrade> upgrades, Player player)
     {
@@ -31,6 +33,7 @@ public class UpgradesUIManager : MonoBehaviour
 
     void OnClickApply(Upgrade upgrade, Player player)
     {
+        audioManager.PlayAudio(upgradeAudio, 0.2f);
         upgrade.Apply(player);
         upgradesManager.OnUpgradeApplied(upgrade);
     }
